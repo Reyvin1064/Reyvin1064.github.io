@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reyvin Matthew Tan | Portfolio</title>
+<meta name="description" content="Career e-Portfolio of Reyvin Matthew Tan, Computer Science student at De La Salle University majoring in Network and Information Security.">
+<meta name="theme-color" content="#1b1e24">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #1b1e24;
+  --surface: #22262e;
+  --surface-hi: #282d36;
+  --line: #313742;
+  --text: #d5d9e0;
+  --muted: #8a92a0;
+  --faint: #636b78;
+  --accent: #7cc4b2;
+  --accent-dim: rgba(124, 196, 178, .12);
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 15.5px/1.6 var(--sans); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+.mono { font-family: var(--mono); }
+
+/* nav */
+.nav { position: sticky; top: 0; z-index: 5; background: rgba(27, 30, 36, .85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: flex; align-items: center; height: 56px; gap: 20px; }
+.logo { font: 500 14px var(--mono); color: var(--text); white-space: nowrap; }
+.logo span { color: var(--accent); }
+.nav nav { margin-left: auto; display: flex; gap: 22px; overflow-x: auto; scrollbar-width: none; }
+.nav nav::-webkit-scrollbar { display: none; }
+.nav nav a { font: 13px var(--mono); color: var(--muted); white-space: nowrap; transition: color .15s; }
+.nav nav a:hover { color: var(--accent); }
+
+/* hero */
+.hero { padding: 110px 0 90px; position: relative; }
+.hero::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(var(--line) 1px, transparent 1px); background-size: 22px 22px; mask-image: linear-gradient(to bottom, #000 0%, transparent 90%); -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 90%); opacity: .7; pointer-events: none; }
+.hero .wrap { position: relative; }
+.prompt { font: 13px var(--mono); color: var(--accent); margin: 0 0 18px; }
+.prompt::after { content: "_"; animation: blink 1.1s steps(1) infinite; margin-left: 2px; }
+@keyframes blink { 50% { opacity: 0; } }
+h1 { font-size: clamp(36px, 6vw, 56px); font-weight: 700; letter-spacing: -.03em; line-height: 1.05; margin: 0 0 16px; color: #e4e7ec; }
+.headline { font: 500 13.5px var(--mono); color: var(--accent); margin: 0 0 14px; letter-spacing: .01em; }
+.role-line { font-size: clamp(16px, 2vw, 18px); color: var(--muted); margin: 0 0 32px; max-width: 560px; }
+.role-line b { color: var(--text); font-weight: 500; }
+.links { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; border-radius: 8px; font: 500 13.5px var(--mono); border: 1px solid var(--line); color: var(--text); background: var(--surface); transition: border-color .15s, color .15s; }
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn.solid { background: var(--accent); border-color: var(--accent); color: #14231f; }
+.btn.solid:hover { filter: brightness(1.08); color: #14231f; }
+.btn svg { width: 16px; height: 16px; }
+
+/* sections */
+section { padding: 72px 0; border-top: 1px solid var(--line); }
+.label { font: 12.5px var(--mono); color: var(--faint); margin: 0 0 28px; letter-spacing: .02em; }
+.label b { color: var(--accent); font-weight: 400; }
+h2 { font-size: 24px; font-weight: 600; letter-spacing: -.015em; margin: 0 0 8px; color: #e4e7ec; }
+.sub { color: var(--muted); margin: 0 0 32px; max-width: 600px; }
+
+/* about */
+.about { display: grid; grid-template-columns: 1fr 260px; gap: 48px; }
+.about p { margin: 0 0 14px; color: var(--muted); font-size: 16px; }
+.about p strong { color: var(--text); font-weight: 500; }
+.facts { display: grid; gap: 16px; align-content: start; }
+.facts div { font-size: 14px; }
+.facts dt { font: 11.5px var(--mono); color: var(--faint); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2px; }
+.facts dd { margin: 0; color: var(--text); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 36px; }
+.chip { font: 12.5px var(--mono); color: var(--muted); padding: 5px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+
+/* projects */
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; transition: border-color .2s, background .2s, transform .2s; }
+a.card:hover { border-color: rgba(124, 196, 178, .5); background: var(--surface-hi); transform: translateY(-2px); }
+.card .top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 14px; }
+.course { font: 11.5px var(--mono); color: var(--faint); }
+.metric { font: 500 12px var(--mono); color: var(--accent); background: var(--accent-dim); padding: 3px 8px; border-radius: 5px; white-space: nowrap; }
+.card h3 { font-size: 17px; font-weight: 600; margin: 0 0 6px; color: #e4e7ec; letter-spacing: -.01em; }
+.card p { margin: 0 0 18px; color: var(--muted); font-size: 14.5px; }
+.tags { margin-top: auto; display: flex; flex-wrap: wrap; gap: 6px 12px; font: 12px var(--mono); color: var(--faint); }
+.card .arrow { color: var(--faint); transition: color .2s, transform .2s; }
+a.card:hover .arrow { color: var(--accent); transform: translate(2px, -2px); }
+.card.wide { grid-column: 1 / -1; }
+.shot { margin: -10px -10px 18px; aspect-ratio: 16 / 8; border-radius: 8px; overflow: hidden; background: #111418; border: 1px solid var(--line); }
+.shot img { width: 100%; height: 100%; object-fit: cover; object-position: left top; display: block; opacity: .92; transition: opacity .2s; }
+a.card:hover .shot img { opacity: 1; }
+.card.wide .shot { aspect-ratio: 16 / 6; }
+.status { font: 500 11px var(--mono); color: #e6c07b; background: rgba(230, 192, 123, .12); padding: 3px 8px; border-radius: 5px; }
+figure.proof { margin: 28px 0 0; }
+figure.proof a { display: block; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+figure.proof img { width: 100%; display: block; opacity: .9; transition: opacity .2s; }
+figure.proof a:hover img { opacity: 1; }
+figure.proof figcaption { font: 12px var(--mono); color: var(--faint); margin-top: 10px; }
+.learn { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; margin-top: 36px; }
+.learn .lessons { margin: 0; }
+.learn figure.proof { margin: 0; }
+.avatar { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; border: 2px solid var(--line); margin-bottom: 22px; display: block; }
+
+.more { margin-top: 28px; }
+.row { display: grid; grid-template-columns: 1fr auto; gap: 16px; padding: 14px 4px; border-bottom: 1px solid var(--line); align-items: baseline; transition: color .15s; }
+.row:first-child { border-top: 1px solid var(--line); }
+.row:hover .name { color: var(--accent); }
+.row .name { font-weight: 500; color: var(--text); }
+.row .desc { color: var(--muted); font-size: 14px; margin-left: 10px; }
+.row .meta { font: 12px var(--mono); color: var(--faint); white-space: nowrap; }
+
+/* experience list */
+.list .row { grid-template-columns: 1fr auto; }
+.list .org { color: var(--muted); font-size: 14px; display: block; }
+.badge { font: 11px var(--mono); color: var(--accent); margin-left: 8px; }
+.honors { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 32px; }
+.honor { display: flex; flex-direction: row; gap: 14px; align-items: center; padding: 18px 20px; }
+.honor .ic { width: 36px; height: 36px; border-radius: 8px; background: var(--accent-dim); color: var(--accent); display: grid; place-items: center; flex: none; }
+.honor .ic svg { width: 18px; height: 18px; }
+.honor h3 { font-size: 15px; margin: 0; }
+.honor span { color: var(--muted); font-size: 13px; }
+
+/* values */
+.values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.value .n { font: 12px var(--mono); color: var(--accent); margin-bottom: 10px; }
+.value h3 { font-size: 16px; margin: 0 0 6px; }
+.value p { margin: 0; }
+.lessons { margin: 36px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.lessons li { display: grid; grid-template-columns: 24px 1fr; color: var(--muted); }
+.lessons li::before { content: "→"; color: var(--accent); font-family: var(--mono); }
+.lessons strong { color: var(--text); font-weight: 500; }
+
+/* contact */
+.contact { text-align: center; padding: 96px 0; }
+.contact h2 { font-size: clamp(26px, 4vw, 34px); margin-bottom: 10px; }
+.contact .sub { margin: 0 auto 28px; }
+.contact .links { justify-content: center; }
+footer { border-top: 1px solid var(--line); padding: 22px 0; font: 12px var(--mono); color: var(--faint); }
+footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+@media (max-width: 760px) {
+  .about { grid-template-columns: 1fr; gap: 28px; }
+  .grid, .values, .honors { grid-template-columns: 1fr; }
+  .card.wide { grid-column: auto; }
+  .card.wide .shot { aspect-ratio: 16 / 8; }
+  .learn { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .wrap { padding: 0 16px; }
+  .hero { padding: 72px 0 60px; }
+  section { padding: 56px 0; }
+  .logo { display: none; }
+  .nav nav { margin-left: 0; gap: 18px; }
+  .row { grid-template-columns: 1fr; gap: 2px; }
+  .row .desc { display: block; margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .prompt::after { animation: none; }
+  a.card:hover { transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">reyvin<span>.</span>tan</a>
+    <nav aria-label="Sections">
+      <a href="#about">about</a>
+      <a href="#work">work</a>
+      <a href="#experience">experience</a>
+      <a href="#values">values</a>
+      <a href="#contact">contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<div class="hero">
+  <div class="wrap">
+    <img class="avatar" src="images/profile.jpg" alt="Portrait of Reyvin Matthew Tan">
+    <p class="prompt">~/career-portfolio $ whoami</p>
+    <h1>Reyvin Matthew Tan</h1>
+    <p class="headline">Cybersecurity · Malware Detection · Network Security</p>
+    <p class="role-line">Computer Science, <b>Network &amp; Information Security</b> at De La Salle University. I build tools that find what doesn't belong.</p>
+    <div class="links">
+      <a class="btn solid" href="Reyvin_Tan_Resume.pdf" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 14h6M9 18h4"/></svg>
+        Resume
+      </a>
+      <a class="btn" href="https://www.linkedin.com/in/reyvin-tan" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.9-1.8-2.9s-2 1.4-2 2.8V21h-4z"/></svg>
+        LinkedIn
+      </a>
+      <a class="btn" href="https://github.com/Reyvin2005" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5a3.9 3.9 0 0 1 1-2.7c-.1-.3-.5-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>
+        GitHub
+      </a>
+      <a class="btn" href="mailto:tanreyvin@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        Email
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <p class="label"><b>01</b> / about</p>
+    <div class="about">
+      <div>
+        <p>I'm a detail-oriented, analytical CS student graduating in 2027. I like understanding how a system <strong>should</strong> behave, then catching the moment it doesn't.</p>
+        <p>My goal: start as a cybersecurity intern and grow into a <strong>threat researcher</strong>. Dream company: <strong>Trend Micro</strong>.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>School</dt><dd>De La Salle University, 2023 – 2027</dd></div>
+        <div><dt>GPA</dt><dd>3.20 / 4.00</dd></div>
+        <div><dt>Based in</dt><dd>Manila, Philippines</dd></div>
+        <div><dt>Languages</dt><dd>English · Filipino · Mandarin</dd></div>
+      </dl>
+    </div>
+    <div class="chips">
+      <span class="chip">Python</span><span class="chip">C / C++</span><span class="chip">x86-64 Assembly</span><span class="chip">Java</span><span class="chip">JavaScript</span><span class="chip">SQL</span>
+      <span class="chip">YARA</span><span class="chip">Digital Forensics</span><span class="chip">Intrusion Detection</span><span class="chip">Wireshark</span><span class="chip">Scapy</span>
+      <span class="chip">Docker</span><span class="chip">RabbitMQ</span><span class="chip">MongoDB</span><span class="chip">Linux</span><span class="chip">Git</span>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="wrap">
+    <p class="label"><b>02</b> / academic work</p>
+    <h2>Selected projects</h2>
+    <p class="sub">Coursework I'm proud of. Each card opens the code on GitHub.</p>
+
+    <div class="grid">
+      <a class="card" href="https://github.com/Joshua1621/NSDSYST-Distributed-Mini-Splunk-Log-Analytics-Ecosystem_G7" target="_blank" rel="noopener">
+        <div class="shot"><img src="images/mini-splunk.jpg" alt="Mini-Splunk CLI ingesting 345,859 log entries" loading="lazy"></div>
+        <div class="top"><span class="course">NSDSYST · 2026</span><span class="metric">24/41 commits</span></div>
+        <h3>Distributed Mini-Splunk <span class="arrow">↗</span></h3>
+        <p>Log analytics platform with APIs, a message queue, worker nodes and sharded storage. I built the CLI client.</p>
+        <div class="tags"><span>Python</span><span>RabbitMQ</span><span>MongoDB</span><span>Docker</span></div>
+      </a>
+      <a class="card" href="https://github.com/Reyvin2005/NSSECU3-Mini-Project-1" target="_blank" rel="noopener">
+        <div class="shot"><img src="images/yara-scan.jpg" alt="Scanner output listing found target files and scan summary" loading="lazy"></div>
+        <div class="top"><span class="course">NSSECU3 · 2026</span><span class="metric">4 file categories</span></div>
+        <h3>YARA Malware Scanner <span class="arrow">↗</span></h3>
+        <p>Finds target files even when renamed, moved or duplicated, using magic-byte YARA rules and hash checks.</p>
+        <div class="tags"><span>Python</span><span>YARA</span><span>MD5 / SHA1</span></div>
+      </a>
+      <a class="card" href="https://github.com/Reyvin2005/MP2-x86-C-Interface-Programming-Project" target="_blank" rel="noopener">
+        <div class="shot"><img src="images/simd-benchmark.jpg" alt="Benchmark output comparing C and assembly run times with matching outputs" loading="lazy"></div>
+        <div class="top"><span class="course">LBYARCH · 2025</span><span class="metric">38–62% less time</span></div>
+        <h3>SIMD Kernel in Assembly <span class="arrow">↗</span></h3>
+        <p>Hand-written x86-64 SIMD that beat C by 1.6–2.6× on vectors up to 268M elements.</p>
+        <div class="tags"><span>x86-64</span><span>C</span><span>SIMD</span></div>
+      </a>
+      <a class="card" href="https://github.com/Reyvin2005/CSOPESY-MO1_and_MO2_Group-9" target="_blank" rel="noopener">
+        <div class="shot"><img src="images/os-emulator.jpg" alt="OS emulator console showing CPU and virtual memory statistics" loading="lazy"></div>
+        <div class="top"><span class="course">CSOPESY · 2025</span><span class="metric">top contributor</span></div>
+        <h3>OS Emulator with Virtual Memory <span class="arrow">↗</span></h3>
+        <p>Multi-core process scheduling (FCFS, Round-Robin) with demand paging and LRU page replacement.</p>
+        <div class="tags"><span>C++</span><span>Multithreading</span></div>
+      </a>
+      <a class="card wide" href="https://github.com/Reyvin2005/NSCOM03-NSS-Project_Group-5" target="_blank" rel="noopener">
+        <div class="top"><span class="course">NSCOM03 · 2025</span><span class="metric">IDS</span></div>
+        <h3>Network Anomaly Detector <span class="arrow">↗</span></h3>
+        <p>Learns normal traffic, then flags IP spoofing by TTL changes and DoS by packet rate.</p>
+        <div class="tags"><span>Python</span><span>Scapy</span><span>PCAP</span></div>
+      </a>
+    </div>
+
+    <div class="more">
+      <a class="row" href="https://github.com/Reyvin2005/NSCOM01-MP2" target="_blank" rel="noopener"><span><span class="name">Audio Streaming over IP</span><span class="desc">SIP + RTP VoIP app</span></span><span class="meta">Python · 2025</span></a>
+      <a class="row" href="https://github.com/JeanLucGaffud/The-Forum" target="_blank" rel="noopener"><span><span class="name">The Forum</span><span class="desc">Full-stack discussion site</span></span><span class="meta">Node.js · 2025</span></a>
+      <a class="row" href="https://github.com/Reyvin2005/CSNETWK-MP" target="_blank" rel="noopener"><span><span class="name">File Exchange</span><span class="desc">Socket client and server</span></span><span class="meta">Python · 2024</span></a>
+      <a class="row" href="https://github.com/Reyvin2005/CSMODEL-" target="_blank" rel="noopener"><span><span class="name">Data Modeling</span><span class="desc">Exploratory data analysis</span></span><span class="meta">Jupyter · 2024</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <p class="label"><b>03</b> / leadership &amp; volunteer work</p>
+    <h2>Experience</h2>
+    <p class="sub">Student organization roles at DLSU.</p>
+    <div class="list">
+      <div class="row"><span><span class="name">Organizational Development Officer</span><span class="badge">now</span><span class="org">Information Security Organization</span></span><span class="meta">2026 –</span></div>
+      <div class="row"><span><span class="name">Executive for Internal Affairs</span><span class="badge">now</span><span class="org">DLSU Microsoft Student Community</span></span><span class="meta">2026 –</span></div>
+      <div class="row"><span><span class="name">Lead Associate for Documentations</span><span class="badge">now</span><span class="org">Investors' Society DLSU</span></span><span class="meta">2026 –</span></div>
+      <div class="row"><span><span class="name">Finance Officer</span><span class="org">Google Developer Groups on Campus DLSU · managed a PHP 10,000+ budget</span></span><span class="meta">2024 – 2026</span></div>
+      <div class="row"><span><span class="name">Events and Activities Associate</span><span class="org">DLSU Data Science Society · workshops reaching 60 participants</span></span><span class="meta">2024 – 2026</span></div>
+    </div>
+    <figure class="proof">
+      <a href="images/docs-tracker.jpg" target="_blank" rel="noopener"><img src="images/docs-tracker.jpg" alt="Investors' Society DLSU documentation task tracker in Google Sheets" loading="lazy"></a>
+      <figcaption>Documentation task tracker I use as Lead Associate for Documentations, Investors' Society DLSU.</figcaption>
+    </figure>
+    <!-- TO ADD EVENT PHOTOS: put images in the "images" folder, then copy the <figure> block above and change the file name and caption. -->
+
+    <div class="honors">
+      <div class="card honor">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg></div>
+        <div><h3>1st Honors, Jose Rizal Award</h3><span>DLSU · A.Y. 2025–2026, Terms 1–3</span></div>
+      </div>
+      <div class="card honor">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></div>
+        <div><h3>With High Honors</h3><span>Legazpi Hope Christian School · 2023</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES & REFLECTION -->
+<section id="values">
+  <div class="wrap">
+    <p class="label"><b>04</b> / values &amp; reflection</p>
+    <h2>How I work</h2>
+    <p class="sub">Principles drawn from my own projects and roles.</p>
+    <div class="values">
+      <div class="card value"><div class="n">01</div><h3>Responsible</h3><p>Attack techniques stay on isolated test networks built for the purpose.</p></div>
+      <div class="card value"><div class="n">02</div><h3>Honest</h3><p>I report exactly what I contributed and keep complete records.</p></div>
+      <div class="card value"><div class="n">03</div><h3>Inclusive</h3><p>Three languages taught me to meet people where they are.</p></div>
+    </div>
+    <div class="learn">
+      <ul class="lessons">
+        <li><span><strong>Correct before fast.</strong> My SIMD kernel only counted once every output matched C.</span></li>
+        <li><span><strong>Verify the AI.</strong> AI tools help me code faster, but I'm accountable for checking every result.</span></li>
+        <li><span><strong>Learning beyond class.</strong> 11 TryHackMe rooms so far, from Nmap and OpenVAS to Metasploit.</span></li>
+        <li><span><strong>Next up:</strong> hands-on threat analysis and industry certifications.</span></li>
+      </ul>
+      <figure class="proof">
+        <a href="images/tryhackme.jpg" target="_blank" rel="noopener"><img src="images/tryhackme.jpg" alt="TryHackMe profile showing 11 completed rooms" loading="lazy"></a>
+        <figcaption>My TryHackMe progress.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <p class="label"><b>05</b> / contact</p>
+    <h2>Let's talk security.</h2>
+    <p class="sub">Open to cybersecurity internships. References available upon request.</p>
+    <div class="links">
+      <a class="btn solid" href="mailto:tanreyvin@gmail.com">tanreyvin@gmail.com</a>
+      <a class="btn" href="Reyvin_Tan_Resume.pdf" download>Download resume</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Reyvin Matthew Tan</span>
+    <span>built with HTML &amp; CSS</span>
+  </div>
+</footer>
+
+</body>
+</html>
